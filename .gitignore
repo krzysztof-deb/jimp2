@@ -1,0 +1,7 @@
+.vs/
+*.db
+*.sqlite
+*.json
+*.opendb
+*.db-shm
+*.db-wal
