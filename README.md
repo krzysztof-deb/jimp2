@@ -1,26 +1,36 @@
-# Wizualizacja Grafów Planarnych (Część w języku C)
+# Graph Visualiser
 
-Aplikacja konsolowa służąca do wyznaczania współrzędnych węzłów dla "ładnej" wizualizacji grafu planarnego, podanego w postaci listy krawędzi. Wynikiem działania programu jest plik z wyliczonymi współrzędnymi 
-X i Y dla każdego wierzchołka.
+Projekt do wizualizacji grafów planarnych, składający się z backendu w języku C oraz frontendu w Javie.
 
-## Funkcjonalności
-* Wczytywanie grafów z plików tekstowych.
-* Obliczanie współrzędnych wierzchołków przy użyciu zaimplementowanych algorytmów.
-* **Walidacja planarności (post-walidacja):** Program po wyliczeniu współrzędnych weryfikuje matematycznie, czy wygenerowany rysunek nie zawiera przecinających się krawędzi. W przypadku wykrycia zderzenia,
-* program zgłasza błąd i przerywa działanie.
-* Eksport wyliczonych współrzędnych do pliku tekstowego.
-* W pełni zautomatyzowany proces budowania i testowania przy użyciu pliku `Makefile`.
+## Struktura projektu
 
-## Kompilacja
+* `backend/` - Rdzeń obliczeniowy w języku C.
+    * `src/` - Pliki źródłowe.
+    * `include/` - Pliki nagłówkowe.
+    * `data/` - Przykładowe dane wejściowe.
+    * `Makefile` - Skrypt budowania backendu.
+* `frontend/` - Aplikacja wizualizacyjna w Java Swing (w przygotowaniu).
 
-Projekt wykorzystuje narzędzie Make oraz kompilator `gcc` (standard C11). Aby skompilować program, otwórz terminal w folderze z projektem i wpisz:
+## Backend (C)
 
+Aplikacja konsolowa służąca do wyznaczania współrzędnych węzłów dla wizualizacji grafu planarnego.
+
+### Kompilacja i uruchomienie
+
+Aby skompilować backend:
 ```bash
+cd backend
 make
 ```
-do wykonania zautomatyzowanych testów:
+
+Aby uruchomić testy:
 ```bash
 make test
 ```
-oczekiwanym wynikiem testów są 3 scenariusze. W pierszym obliczenia się udają i do pliku wyniki1.txt zapisany zostaje graf planarny. W drugim powstały graf nie jest planarny, a w trzecim podano złe argumenty 
-wejścia i wyrzucany jest błąd.
+
+Wynik kompilacji znajduje się w `backend/build/graph_layout`.
+
+### Użycie
+```bash
+./backend/build/graph_layout -i backend/data/graf_planarny.txt -o wynik.txt -a tutte
+```
